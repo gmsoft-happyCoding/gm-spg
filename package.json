@@ -8,7 +8,7 @@
     "test": "cross-env NODE_ENV=development jest --watch"
   },
   "name": "@gmsoft/search-page-generator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "自动生成SearchPage调用",
   "main": "./dist/spg.js",
   "author": "JulyWind",
