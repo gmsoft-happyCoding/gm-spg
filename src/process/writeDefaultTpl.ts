@@ -50,10 +50,19 @@ export default async function writeDefaultTpl(
     writeTpl(moduleName, TplType.TYPE_CONTENT, Content);
     writeTpl(moduleName, moduleName, entranceContent);
 
-    if (tplVersion === "all-beta") {
+    // 版本中包含full的，尝试复制渲染配置文件，如果失败，则静默失败
+    if (tplVersion.includes("full")) {
       // 复制渲染配置文件
-      const renderConfContent = getTpl(tplVersion, TplType.TYPE_RENDER_CONF);
-      writeTpl(moduleName, TplType.TYPE_RENDER_CONF, renderConfContent);
+      try {
+        const renderConfContent = getTpl(tplVersion, TplType.TYPE_RENDER_CONF);
+        writeTpl(moduleName, TplType.TYPE_RENDER_CONF, renderConfContent);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(
+          "Info -> ",
+          color("yellow", "状态渲染配置文件不存在，已忽略。")
+        );
+      }
     }
     // eslint-disable-next-line no-console
     console.log("Write file -> ", color("green", "文件写出完成！"));

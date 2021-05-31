@@ -3,12 +3,12 @@
     "spg": "./dist/spg.js"
   },
   "scripts": {
-    "dev": "rollup -c -w",
-    "build": "rollup -c",
-    "test": "jest --watch"
+    "dev": "cross-env NODE_ENV=development rollup -c -w",
+    "build": "cross-env NODE_ENV=production rollup -c",
+    "test": "cross-env NODE_ENV=development jest --watch"
   },
   "name": "@gmsoft/search-page-generator",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "自动生成SearchPage调用",
   "main": "./dist/spg.js",
   "author": "JulyWind",

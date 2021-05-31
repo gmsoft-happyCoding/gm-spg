@@ -10,6 +10,8 @@ import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
 import eslint from "@rollup/plugin-eslint";
 
+const isDev = process.env.NODE_ENV !== "production";
+
 export default {
   input: [
     "./src/spg.ts",
@@ -21,7 +23,8 @@ export default {
     dir: "dist",
     format: "cjs",
     banner: "#!/usr/bin/env node",
-    // sourcemap: true,
+    sourcemap: isDev,
+
   },
   watch: "src/**",
   plugins: [
